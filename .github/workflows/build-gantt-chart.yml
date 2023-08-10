@@ -1,4 +1,4 @@
-name: Build AKS Support Kubernetes Versions Gantt Chart
+name: Build AKS Supported Kubernetes Versions Gantt Chart
 
 # Controls when the workflow will run
 on:
