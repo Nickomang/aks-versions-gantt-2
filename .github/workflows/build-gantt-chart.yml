@@ -27,3 +27,13 @@ jobs:
       # Runs a single command using the runners shell
       - name: Build the Mermaid Gantt Chart
         run: for format in "png" "svg"; do docker run --rm -u `id -u`:`id -g` -v ${PWD}:/data minlag/mermaid-cli:10.3.0 --theme neutral --width 1200 --input kubernetes-versions-gantt.mmd --output kubernetes-versions-gantt-$(date +%Y%m%d).${format}; done
+
+      # Uploads the generated charts as artifacts  
+      - uses: actions/upload-artifact@v3
+        with:
+          name: charts
+          path: |
+            *.png
+            *.svg
+          if-no-files-found: error
+          retention-days: 1
